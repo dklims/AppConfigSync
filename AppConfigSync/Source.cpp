@@ -15,16 +15,25 @@ int main()
 
 {
 	//define / open files
-	ifstream my_input_file;
+	ifstream my_input_file; 
 	ofstream my_output_file;
-	string filepath = "C:/Users/David/Documents/My games/oblivion/RendererInfo.txt";
+	char filepath[150];//"C:/Users/David/Documents/My games/oblivion/RendererInfo.txt";
+	cout << "enter a directory to copy: ";
+	cin.getline(filepath,sizeof(filepath));
+	cout << endl;
+	
+	cout << "enter a destination directory: ";
+	char destinationPath[150];
+	cin.getline(destinationPath, sizeof(destinationPath));
+	cout << endl;
+
 	my_input_file.open(filepath);
 
 
 	if (my_input_file.is_open())
 	{
 		cout << "opened\n";
-		my_output_file.open("C:/Users/David/Documents/My games/oblivion/output_file.txt", ofstream::trunc);
+		my_output_file.open(destinationPath, ofstream::trunc);
 		char c;
 		my_input_file.get(c);
 		while (my_input_file)
@@ -42,8 +51,11 @@ int main()
 	{
 		cout << "FAIL\n";
 	}
+	char programToStart[150];
+	cout << "enter a program to start: ";
+	cin.getline(programToStart,sizeof(programToStart));
 	
-	StartProgram("C:/Program Files (x86)/Steam/steamapps/common/FINAL FANTASY XIV - A Realm Reborn/boot/ffxivboot.exe");
+	StartProgram(programToStart);
 	//StartProgram("C:/Users/David/AppData/Roaming/Spotify/Spotify.exe");
 	//system("copy C:\\Users\\David\\Desktop\\folder_to copy\\' 'C:\\Users\\David\\Desktop\\end\\'");
 	//system("copy C:\\Users\\David\\Google Drive\\Saves\\ffxivConfig\\FINAL FANTASY XIV - A Realm Reborn\\ C:\\Users\\David\\Desktop\\end\\");
